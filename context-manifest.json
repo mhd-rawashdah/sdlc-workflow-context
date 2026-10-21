@@ -1,0 +1,74 @@
+{
+  "name": "sdlc-workflow-context",
+  "version": "1.0.0",
+  "manifestVersion": "1",
+  "description": "Engineering conventions, verification policy, Agent Skills and lifecycle guidance for the Slingshot Jira-to-PR SDLC workflow.",
+  "documents": [
+    "HARNESS.md",
+    "CONVENTIONS.md",
+    "VERIFY.md"
+  ],
+  "skills": [
+    {
+      "name": "figma-design-audit",
+      "path": "skills/figma-design-audit/SKILL.md",
+      "intendedRole": "Figma Design Auditor",
+      "mode": "read-only",
+      "references": [
+        "skills/figma-design-audit/references/audit-checklist.md"
+      ],
+      "scripts": []
+    },
+    {
+      "name": "figma-to-code",
+      "path": "skills/figma-to-code/SKILL.md",
+      "intendedRole": "Frontend Engineer",
+      "mode": "write",
+      "references": [
+        "skills/figma-to-code/references/implementation-guide.md"
+      ],
+      "scripts": []
+    },
+    {
+      "name": "figma-verify",
+      "path": "skills/figma-verify/SKILL.md",
+      "intendedRole": "Figma Verifier",
+      "mode": "read-only",
+      "references": [
+        "skills/figma-verify/references/verification-checklist.md"
+      ],
+      "scripts": []
+    },
+    {
+      "name": "pr-review",
+      "path": "skills/pr-review/SKILL.md",
+      "intendedRole": "PR Reviewer",
+      "mode": "read-only",
+      "references": [
+        "skills/pr-review/references/review-categories.md"
+      ],
+      "scripts": [
+        {
+          "path": "skills/pr-review/scripts/review-pr.mjs",
+          "runtime": "node>=20",
+          "dependencies": [
+            "skills/pr-review/scripts/repo-profile.mjs",
+            "skills/pr-review/scripts/authorship.mjs"
+          ],
+          "test": "skills/pr-review/scripts/review-pr.test.mjs",
+          "writesToTarget": false
+        }
+      ]
+    },
+    {
+      "name": "security-review",
+      "path": "skills/security-review/SKILL.md",
+      "intendedRole": "Security Reviewer",
+      "mode": "read-only",
+      "references": [
+        "skills/security-review/references/security-checklist.md"
+      ],
+      "scripts": []
+    }
+  ]
+}
